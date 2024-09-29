@@ -1,49 +1,48 @@
 ﻿using System;
 
-class Ascon_task3
+class MySecondProgram
 {
   static void Main()
   {
     int[] numbers = new int[5];
     int count = 0;
-    int errors = 0;
+    int mistakes = 0;
 
     while (true)
     {
-      Console.WriteLine("Введите число или Q для завершения:");
+      Console.WriteLine("Введи число или Q чтобы закончить:");
       string input = Console.ReadLine();
 
       if (input == "Q" || input == "q")
       {
-        Console.WriteLine("Массив:");
+        Console.WriteLine("Вот что в массиве:");
         for (int i = 0; i < count; i++)
         {
           Console.Write(numbers[i] + " ");
         }
         Console.WriteLine();
-
-        Console.WriteLine("Что делать? C - Очистить, P - Продолжить, E - Выйти");
+        Console.WriteLine("Что дальше? C - Очистить, P - Продолжить, E - Выйти");
         string action = Console.ReadLine();
 
         if (action == "C" || action == "c")
         {
           numbers = new int[5];
           count = 0;
-          Console.WriteLine("Массив очищен.");
+          Console.WriteLine("Массив пустой теперь.");
         }
         else if (action == "E" || action == "e")
         {
-          Console.WriteLine("Введено чисел: " + count);
-          Console.WriteLine("Ошибок: " + errors);
+          Console.WriteLine("Всего чисел: " + count);
+          Console.WriteLine("Было ошибок: " + mistakes);
           break;
         }
         else if (action == "P" || action == "p")
         {
-          // ничего не делаем, продолжаем цикл
+          // ничего не делаем, идём дальше
         }
         else
         {
-          Console.WriteLine("Неправильная команда.");
+          Console.WriteLine("Не понял команду.");
         }
       }
       else
@@ -53,21 +52,20 @@ class Ascon_task3
         {
           if (count == numbers.Length)
           {
-            int[] newNumbers = new int[numbers.Length * 2];
+            int[] biggerArray = new int[numbers.Length * 2];
             for (int i = 0; i < numbers.Length; i++)
             {
-              newNumbers[i] = numbers[i];
+              biggerArray[i] = numbers[i];
             }
-            numbers = newNumbers;
+            numbers = biggerArray;
           }
-
           numbers[count] = number;
           count++;
         }
         else
         {
-          Console.WriteLine("Это не число!");
-          errors++;
+          Console.WriteLine("Эй, это не число!");
+          mistakes++;
         }
       }
     }
